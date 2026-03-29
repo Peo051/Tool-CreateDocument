@@ -1,0 +1,13 @@
+{% set default_objectives = [
+    "Nghiên cứu và triển khai các thuật toán AI cơ bản",
+    "Áp dụng thuật toán CSP và Graph Coloring",
+    "Xây dựng hệ thống AI đa tầng",
+    "Triển khai chế độ online",
+    "Tạo công cụ debug và visualization"
+] %}
+
+{% set obj_list = objectives if objectives is not none else default_objectives %}
+
+{% for objective in obj_list %}
+- {{ objective }}
+{% endfor %}

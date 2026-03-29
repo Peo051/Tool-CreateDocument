@@ -1,0 +1,7 @@
+# PDF Renderer Dependencies
+
+# Core PDF generation
+reportlab>=3.6.0
+
+# Optional: For enhanced features
+# Pillow>=9.0.0  # Image processing (usually included with reportlab)

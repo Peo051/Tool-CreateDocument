@@ -1,0 +1,8 @@
+# DOCX Renderer Dependencies
+
+# Core document generation
+python-docx>=0.8.11
+
+# Optional: For enhanced features
+# Pillow>=9.0.0  # Image processing (if needed)
+# lxml>=4.9.0    # XML processing (usually included with python-docx)

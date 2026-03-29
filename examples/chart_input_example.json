@@ -1,0 +1,92 @@
+{
+  "charts": [
+    {
+      "id": "algo_performance",
+      "title": "Algorithm Execution Time Comparison",
+      "type": "bar",
+      "data": {
+        "categories": ["BFS", "DFS", "A*", "Dijkstra"],
+        "values": [120, 95, 85, 150],
+        "label": "Execution Time (ms)"
+      },
+      "x_label": "Algorithm",
+      "y_label": "Time (ms)",
+      "caption": "Comparison of search algorithm execution times on 1000-node graph",
+      "width": 10,
+      "height": 6,
+      "dpi": 150
+    },
+    {
+      "id": "training_loss",
+      "title": "Model Training Loss Over Epochs",
+      "type": "line",
+      "data": {
+        "x_values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "y_values": [0.95, 0.78, 0.65, 0.52, 0.45, 0.38, 0.32, 0.28, 0.25, 0.23],
+        "label": "Training Loss"
+      },
+      "x_label": "Epoch",
+      "y_label": "Loss",
+      "caption": "Training loss decreases over 10 epochs"
+    },
+    {
+      "id": "dataset_split",
+      "title": "Dataset Split Distribution",
+      "type": "pie",
+      "data": {
+        "labels": ["Training", "Validation", "Testing"],
+        "values": [7000, 1500, 1500]
+      },
+      "caption": "Dataset split: 70% training, 15% validation, 15% testing"
+    },
+    {
+      "id": "algo_comparison",
+      "title": "Search Algorithm Comparison",
+      "type": "comparison_table",
+      "data": {
+        "headers": ["Algorithm", "Time (ms)", "Space (MB)", "Optimal", "Complete"],
+        "rows": [
+          ["BFS", "120", "45", "Yes", "Yes"],
+          ["DFS", "95", "30", "No", "No"],
+          ["A*", "85", "50", "Yes", "Yes"],
+          ["Dijkstra", "150", "55", "Yes", "Yes"]
+        ]
+      },
+      "caption": "Comparison of search algorithms on various metrics",
+      "width": 12,
+      "height": 4
+    },
+    {
+      "id": "multi_dataset_perf",
+      "title": "Algorithm Performance Across Datasets",
+      "type": "grouped_bar",
+      "data": {
+        "categories": ["Small", "Medium", "Large"],
+        "series": [
+          {"label": "BFS", "values": [50, 120, 300]},
+          {"label": "DFS", "values": [45, 95, 250]},
+          {"label": "A*", "values": [40, 85, 220]}
+        ]
+      },
+      "x_label": "Dataset Size",
+      "y_label": "Execution Time (ms)",
+      "caption": "Performance comparison across different dataset sizes"
+    },
+    {
+      "id": "resource_usage",
+      "title": "System Resource Usage by Component",
+      "type": "stacked_bar",
+      "data": {
+        "categories": ["Preprocessing", "Training", "Evaluation"],
+        "series": [
+          {"label": "CPU", "values": [30, 60, 20]},
+          {"label": "Memory", "values": [20, 80, 30]},
+          {"label": "Disk I/O", "values": [50, 40, 10]}
+        ]
+      },
+      "x_label": "Phase",
+      "y_label": "Resource Usage (%)",
+      "caption": "Breakdown of resource usage across pipeline phases"
+    }
+  ]
+}

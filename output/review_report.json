@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "total_issues": 7,
+  "errors": 0,
+  "warnings": 5,
+  "infos": 2,
+  "issues": [
+    {
+      "check_type": "formatting",
+      "severity": "warning",
+      "message": "Subsection may be missing numbering: Background",
+      "section_id": "intro_background",
+      "section_title": "Background",
+      "details": {
+        "expected_number": "1.1"
+      }
+    },
+    {
+      "check_type": "formatting",
+      "severity": "warning",
+      "message": "Subsection may be missing numbering: Objectives",
+      "section_id": "intro_objectives",
+      "section_title": "Objectives",
+      "details": {
+        "expected_number": "1.2"
+      }
+    },
+    {
+      "check_type": "formatting",
+      "severity": "warning",
+      "message": "Subsection may be missing numbering: Research Approach",
+      "section_id": "method_approach",
+      "section_title": "Research Approach",
+      "details": {
+        "expected_number": "2.1"
+      }
+    },
+    {
+      "check_type": "formatting",
+      "severity": "warning",
+      "message": "Subsection may be missing numbering: Performance Analysis",
+      "section_id": "results_performance",
+      "section_title": "Performance Analysis",
+      "details": {
+        "expected_number": "3.1"
+      }
+    },
+    {
+      "check_type": "references",
+      "severity": "info",
+      "message": "Reference [1] may be unused",
+      "section_id": null,
+      "section_title": null,
+      "details": {
+        "reference": "Russell, S., & Norvig, P. (2020). Artificial Intelligence: A Modern Approach."
+      }
+    },
+    {
+      "check_type": "references",
+      "severity": "info",
+      "message": "Reference [2] may be unused",
+      "section_id": null,
+      "section_title": null,
+      "details": {
+        "reference": "Cormen, T. H., et al. (2009). Introduction to Algorithms."
+      }
+    },
+    {
+      "check_type": "content",
+      "severity": "warning",
+      "message": "Section 'REFERENCES' has insufficient content",
+      "section_id": null,
+      "section_title": "REFERENCES",
+      "details": {
+        "content_length": 0
+      }
+    }
+  ],
+  "metadata": {
+    "checks_run": 7,
+    "report_type": "project_report"
+  }
+}

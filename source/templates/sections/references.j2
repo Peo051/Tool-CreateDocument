@@ -1,0 +1,21 @@
+{% if github_repo %}
+[1] Repository: {{ github_repo }}
+{% endif %}
+
+{% if demo_url %}
+[{{ 2 if github_repo else 1 }}] Demo: {{ demo_url }}
+{% endif %}
+
+{% set start_num = 1 %}
+{% if github_repo %}{% set start_num = start_num + 1 %}{% endif %}
+{% if demo_url %}{% set start_num = start_num + 1 %}{% endif %}
+
+[{{ start_num }}] Stuart Russell, Peter Norvig. Artificial Intelligence: A Modern Approach. 4th Edition, 2020.
+
+[{{ start_num + 1 }}] Thomas H. Cormen et al. Introduction to Algorithms. 3rd Edition, MIT Press, 2009.
+
+{% if custom_references %}
+{% for ref in custom_references %}
+[{{ start_num + 2 + loop.index0 }}] {{ ref }}
+{% endfor %}
+{% endif %}

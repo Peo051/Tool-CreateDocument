@@ -1,0 +1,56 @@
+{# Algorithm Section Template #}
+{# Context variables: name, title, category, purpose, theory, complexity, pseudocode, role, advantages, limitations, solution, application #}
+
+{% if purpose %}
+{{ purpose }}
+{% endif %}
+
+{% if theory %}
+
+{{ theory }}
+{% endif %}
+
+{% if complexity %}
+
+**Độ phức tạp:** {{ complexity }}
+{% endif %}
+
+{% if pseudocode %}
+
+**Giả mã:**
+
+```
+{{ pseudocode }}
+```
+{% endif %}
+
+{% if role %}
+
+**Vai trò:** {{ role }}
+{% endif %}
+
+{% if advantages %}
+
+**Ưu điểm:**
+{% for adv in advantages %}
+- {{ adv }}
+{% endfor %}
+{% endif %}
+
+{% if limitations %}
+
+**Hạn chế:**
+{% for lim in limitations %}
+- {{ lim }}
+{% endfor %}
+{% endif %}
+
+{% if solution %}
+
+**Giải pháp:** {{ solution }}
+{% endif %}
+
+{% if application %}
+
+**Ứng dụng:** {{ application }}
+{% endif %}

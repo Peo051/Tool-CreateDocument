@@ -1,0 +1,9 @@
+Qua quá trình nghiên cứu và triển khai đồ án "{{ title|default('Ứng dụng thuật toán AI') }}", nhóm đã đạt được các kết quả quan trọng trong việc áp dụng các thuật toán AI vào một hệ thống game hoàn chỉnh.
+
+Đồ án đã thành công trong việc tích hợp nhiều thuật toán AI khác nhau, từ sinh môi trường (DFS, CSP) đến tìm đường (BFS, A*, Dijkstra) và ra quyết định (Minimax, Utility Scoring).
+
+{% if future_work %}
+Hướng phát triển tiếp theo bao gồm: {{ future_work|join(', ') }}.
+{% else %}
+Hướng phát triển tiếp theo bao gồm: tối ưu hiệu năng, thêm machine learning, phát triển mobile app và tournament mode.
+{% endif %}
