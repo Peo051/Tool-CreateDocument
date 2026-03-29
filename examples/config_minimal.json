@@ -1,0 +1,18 @@
+{
+  "project_info": {
+    "title": "My Research Project",
+    "description": "A comprehensive study on machine learning applications",
+    "students": [
+      {
+        "name": "John Doe",
+        "id": "12345"
+      }
+    ],
+    "university": "Example University"
+  },
+  
+  "report_profile": {
+    "report_type": "thesis",
+    "language": "en"
+  }
+}

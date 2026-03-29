@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "title": "Saved Project",
+    "description": "This config will be saved",
+    "students": [
+      {
+        "name": "User"
+      }
+    ],
+    "university": "University",
+    "keywords": []
+  },
+  "report_profile": {
+    "report_type": "technical_report",
+    "language": "vi"
+  },
+  "content_requirements": {
+    "include_cover": true,
+    "include_acknowledgment": true,
+    "include_commitment": true,
+    "include_toc": true,
+    "include_references": true,
+    "custom_sections": []
+  },
+  "technical_data": {
+    "algorithms": [],
+    "technologies": [],
+    "datasets": [],
+    "algorithm_details": []
+  },
+  "evidence": {
+    "charts": [],
+    "tables": [],
+    "figures": [],
+    "references": []
+  },
+  "format_rules": {
+    "citation_style": "IEEE",
+    "font_name": "Times New Roman",
+    "font_size": 13,
+    "line_spacing": 1.5,
+    "margin_left": 3.0,
+    "margin_right": 2.0,
+    "margin_top": 2.0,
+    "margin_bottom": 2.0
+  },
+  "version": "1.0"
+}

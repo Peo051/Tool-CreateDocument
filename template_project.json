@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "title": "[Tên đề tài]",
+    "subtitle": null,
+    "domain": "[Lĩnh vực]",
+    "description": "[Mô tả]",
+    "authors": [
+      {
+        "name": "[Tên sinh viên]",
+        "student_id": "[MSSV]",
+        "email": null,
+        "role": null
+      }
+    ],
+    "organization": "[Tên trường]",
+    "department": null,
+    "supervisor": "[Tên GV]",
+    "supervisor_title": null,
+    "start_date": null,
+    "end_date": null,
+    "keywords": [],
+    "github_repo": null,
+    "demo_url": null,
+    "documentation_url": null
+  },
+  "report_profile": {
+    "report_type": "project_report",
+    "audience": "lecturer",
+    "language": "vi",
+    "tone": "formal",
+    "target_length_pages": 50,
+    "abstract_max_words": 250
+  },
+  "content_requirements": {
+    "must_have_sections": [
+      "introduction",
+      "overview",
+      "methodology",
+      "implementation",
+      "results",
+      "conclusion"
+    ],
+    "optional_sections": [],
+    "custom_outline": [],
+    "include_abstract": true,
+    "include_acknowledgment": true,
+    "include_commitment": true
+  },
+  "technical_data": {
+    "technologies": [],
+    "algorithms": [],
+    "datasets": [],
+    "experiments": [],
+    "metrics": [],
+    "system_architecture": null
+  },
+  "evidence": {
+    "charts": [],
+    "tables": [],
+    "figures": [],
+    "references": []
+  },
+  "format_rules": {
+    "citation_style": "APA",
+    "heading_style": "1-1.1-1.1.1",
+    "page_size": "A4",
+    "margin_left_cm": 3.0,
+    "margin_right_cm": 2.0,
+    "margin_top_cm": 2.0,
+    "margin_bottom_cm": 2.0,
+    "font_name": "Times New Roman",
+    "font_size": 13,
+    "line_spacing": 1.5,
+    "include_toc": true,
+    "include_list_of_figures": true,
+    "include_list_of_tables": true,
+    "number_figures": true,
+    "number_tables": true,
+    "number_equations": true
+  },
+  "generation_options": {
+    "auto_generate_content": true,
+    "auto_generate_diagrams": true,
+    "output_format": [
+      "docx"
+    ],
+    "output_filename": null,
+    "output_directory": "output",
+    "use_ai_enhancement": false,
+    "ai_model": null,
+    "verbose": false,
+    "save_intermediate": false
+  },
+  "schema_version": "1.0.0",
+  "created_at": "2026-03-29",
+  "updated_at": "2026-03-29"
+}

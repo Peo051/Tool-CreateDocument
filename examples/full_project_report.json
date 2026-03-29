@@ -1,0 +1,256 @@
+{
+  "project_info": {
+    "title": "Maze Duel - BO3 / Gemini_Game",
+    "subtitle": "Ứng dụng thuật toán AI trong game mê cung đối kháng",
+    "domain": "Artificial Intelligence",
+    "description": "Game 2D multiplayer với AI sử dụng nhiều thuật toán tìm kiếm, CSP và ra quyết định thông minh",
+    "authors": [
+      {
+        "name": "Trần Dương Gia Bảo",
+        "student_id": "2001240039",
+        "email": "bao@example.com",
+        "role": "Team Leader"
+      },
+      {
+        "name": "Nguyễn Thế Anh",
+        "student_id": "2001240015",
+        "role": "Developer"
+      }
+    ],
+    "organization": "Đại học Công Thương TP. HCM",
+    "department": "Khoa Công nghệ thông tin",
+    "supervisor": "Trần Việt Hùng",
+    "supervisor_title": "TS.",
+    "keywords": ["AI", "Game", "Pathfinding", "CSP", "Multiplayer"],
+    "github_repo": "https://github.com/GiaBao051/Gemini_Game",
+    "demo_url": "https://giabao051.github.io/Gemini_Game/"
+  },
+  
+  "report_profile": {
+    "report_type": "project_report",
+    "audience": "lecturer",
+    "language": "vi",
+    "tone": "formal",
+    "target_length_pages": 60,
+    "abstract_max_words": 250
+  },
+  
+  "content_requirements": {
+    "must_have_sections": [
+      "introduction",
+      "overview",
+      "methodology",
+      "implementation",
+      "results",
+      "conclusion"
+    ],
+    "optional_sections": ["future_work", "appendix"],
+    "include_abstract": true,
+    "include_acknowledgment": true,
+    "include_commitment": true
+  },
+  
+  "technical_data": {
+    "technologies": [
+      "HTML5",
+      "JavaScript",
+      "Canvas API",
+      "MQTT",
+      "WebSocket"
+    ],
+    "algorithms": [
+      {
+        "name": "DFS",
+        "category": "Graph Traversal",
+        "purpose": "Sinh mê cung procedural",
+        "complexity": "O(V + E)",
+        "implementation_language": "JavaScript"
+      },
+      {
+        "name": "BFS",
+        "category": "Pathfinding",
+        "purpose": "Distance map và fairness check",
+        "complexity": "O(V + E)",
+        "implementation_language": "JavaScript"
+      },
+      {
+        "name": "A*",
+        "category": "Pathfinding",
+        "purpose": "Tìm đường tối ưu với heuristic",
+        "complexity": "O(E log V)",
+        "implementation_language": "JavaScript"
+      },
+      {
+        "name": "Dijkstra",
+        "category": "Pathfinding",
+        "purpose": "Đường đi an toàn theo chi phí rủi ro",
+        "complexity": "O(E log V)",
+        "implementation_language": "JavaScript"
+      },
+      {
+        "name": "CSP",
+        "category": "Constraint Satisfaction",
+        "purpose": "Đặt nội dung bản đồ theo ràng buộc",
+        "complexity": "O(d^n)",
+        "implementation_language": "JavaScript"
+      }
+    ],
+    "datasets": [
+      {
+        "name": "Custom Maze Dataset",
+        "source": "Generated",
+        "size": "1000 mazes",
+        "description": "Randomly generated mazes for testing algorithms"
+      }
+    ],
+    "experiments": [
+      {
+        "name": "Algorithm Benchmark",
+        "objective": "So sánh hiệu năng của 5 thuật toán",
+        "setup": "100 test cases, Intel i7-10700K, 16GB RAM",
+        "results_summary": "A* nhanh nhất với 32ms trung bình"
+      }
+    ],
+    "metrics": [
+      {
+        "name": "Average Response Time - A*",
+        "value": 32.5,
+        "unit": "ms",
+        "description": "Thời gian phản hồi trung bình của thuật toán A*"
+      },
+      {
+        "name": "Map Generation Time - DFS",
+        "value": 50,
+        "unit": "ms",
+        "description": "Thời gian sinh mê cung bằng DFS"
+      },
+      {
+        "name": "Memory Usage - BFS",
+        "value": 15,
+        "unit": "MB",
+        "description": "Bộ nhớ sử dụng của BFS"
+      }
+    ],
+    "system_architecture": "Client-server architecture với WebSocket cho multiplayer, Canvas API cho rendering, và MQTT cho real-time communication"
+  },
+  
+  "evidence": {
+    "charts": [
+      {
+        "id": "chart_performance",
+        "title": "So sánh hiệu năng thuật toán",
+        "type": "bar",
+        "data": {
+          "labels": ["DFS", "BFS", "A*", "Dijkstra", "CSP"],
+          "values": [50, 80, 32, 45, 120]
+        },
+        "caption": "Thời gian chạy trung bình (ms) trên 100 test cases",
+        "position": "results"
+      },
+      {
+        "id": "chart_memory",
+        "title": "So sánh bộ nhớ sử dụng",
+        "type": "bar",
+        "data": {
+          "labels": ["DFS", "BFS", "A*", "Dijkstra"],
+          "values": [12, 15, 18, 20]
+        },
+        "caption": "Bộ nhớ sử dụng (MB)",
+        "position": "results"
+      }
+    ],
+    "tables": [
+      {
+        "id": "table_comparison",
+        "title": "Bảng so sánh thuật toán",
+        "headers": ["Algorithm", "Time (ms)", "Memory (MB)", "Optimal", "Use Case"],
+        "rows": [
+          ["DFS", "50", "12", "No", "Map generation"],
+          ["BFS", "80", "15", "Yes", "Distance map"],
+          ["A*", "32", "18", "Yes", "Pathfinding"],
+          ["Dijkstra", "45", "20", "Yes", "Safe path"],
+          ["CSP", "120", "25", "Yes", "Content placement"]
+        ],
+        "caption": "Kết quả benchmark trên Intel i7-10700K, 16GB RAM, 100 test cases",
+        "position": "results"
+      }
+    ],
+    "figures": [
+      {
+        "id": "fig_architecture",
+        "title": "Kiến trúc hệ thống",
+        "file_path": "diagrams/architecture.png",
+        "caption": "Sơ đồ kiến trúc tổng thể của Maze Duel Game",
+        "width": 6.0,
+        "position": "implementation"
+      },
+      {
+        "id": "fig_astar",
+        "title": "Minh họa thuật toán A*",
+        "file_path": "diagrams/astar_diagram.png",
+        "caption": "Ví dụ A* tìm đường từ start đến goal",
+        "width": 5.5,
+        "position": "methodology"
+      }
+    ],
+    "references": [
+      {
+        "id": "Russell2020",
+        "type": "book",
+        "authors": ["Stuart Russell", "Peter Norvig"],
+        "title": "Artificial Intelligence: A Modern Approach",
+        "year": 2020,
+        "publisher": "Pearson",
+        "pages": "1-1136"
+      },
+      {
+        "id": "Cormen2009",
+        "type": "book",
+        "authors": ["Thomas H. Cormen", "Charles E. Leiserson", "Ronald L. Rivest", "Clifford Stein"],
+        "title": "Introduction to Algorithms",
+        "year": 2009,
+        "publisher": "MIT Press"
+      },
+      {
+        "id": "GitHub",
+        "type": "website",
+        "authors": ["Trần Dương Gia Bảo"],
+        "title": "Gemini_Game Repository",
+        "year": 2024,
+        "url": "https://github.com/GiaBao051/Gemini_Game"
+      }
+    ]
+  },
+  
+  "format_rules": {
+    "citation_style": "IEEE",
+    "heading_style": "1-1.1-1.1.1",
+    "page_size": "A4",
+    "margin_left_cm": 3.0,
+    "margin_right_cm": 2.0,
+    "margin_top_cm": 2.0,
+    "margin_bottom_cm": 2.0,
+    "font_name": "Times New Roman",
+    "font_size": 13,
+    "line_spacing": 1.5,
+    "include_toc": true,
+    "include_list_of_figures": true,
+    "include_list_of_tables": true,
+    "number_figures": true,
+    "number_tables": true,
+    "number_equations": true
+  },
+  
+  "generation_options": {
+    "auto_generate_content": true,
+    "auto_generate_diagrams": true,
+    "output_format": ["docx", "pdf"],
+    "output_filename": "Bao_Cao_Do_An_TTNT_Full",
+    "output_directory": "output",
+    "use_ai_enhancement": false,
+    "verbose": true,
+    "save_intermediate": false
+  },
+  
+  "schema_version": "1.0.0"
+}

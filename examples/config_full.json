@@ -1,0 +1,125 @@
+{
+  "project_info": {
+    "title": "Maze Duel - BO3 / Gemini_Game",
+    "subtitle": "Ứng dụng thuật toán AI trong game mê cung đối kháng",
+    "description": "Game 2D multiplayer với AI sử dụng nhiều thuật toán tìm kiếm, CSP, và ra quyết định thông minh",
+    "students": [
+      {
+        "name": "Trần Dương Gia Bảo",
+        "id": "2001240039",
+        "email": "bao@example.com",
+        "role": "Team Leader"
+      },
+      {
+        "name": "Nguyễn Thế Anh",
+        "id": "2001240015",
+        "role": "Developer"
+      }
+    ],
+    "advisor": "TS. Trần Việt Hùng",
+    "university": "Đại học Công Thương TP. HCM",
+    "faculty": "Công nghệ thông tin",
+    "class": "DHCN01",
+    "github_repo": "https://github.com/GiaBao051/Gemini_Game",
+    "demo_url": "https://giabao051.github.io/Gemini_Game/",
+    "keywords": ["AI", "Game", "Pathfinding", "CSP", "Multiplayer"]
+  },
+  
+  "report_profile": {
+    "report_type": "project_report",
+    "language": "vi",
+    "target_pages": 60
+  },
+  
+  "content_requirements": {
+    "include_cover": true,
+    "include_acknowledgment": true,
+    "include_commitment": true,
+    "include_toc": true,
+    "include_references": true,
+    "custom_sections": []
+  },
+  
+  "technical_data": {
+    "algorithms": ["DFS", "BFS", "A*", "Dijkstra", "CSP"],
+    "technologies": ["HTML5", "JavaScript", "Canvas API", "MQTT", "WebSocket"],
+    "datasets": ["Custom Maze Dataset"],
+    "algorithm_details": [
+      {
+        "name": "A*",
+        "category": "Pathfinding",
+        "complexity": "O(E log V)"
+      },
+      {
+        "name": "Dijkstra",
+        "category": "Pathfinding",
+        "complexity": "O(E log V)"
+      }
+    ]
+  },
+  
+  "evidence": {
+    "charts": [
+      {
+        "id": "chart_performance",
+        "title": "Algorithm Performance Comparison",
+        "type": "bar",
+        "data": {
+          "labels": ["DFS", "BFS", "A*", "Dijkstra"],
+          "values": [50, 80, 32, 45]
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "table_comparison",
+        "title": "Algorithm Comparison",
+        "headers": ["Algorithm", "Time (ms)", "Memory (MB)", "Optimal"],
+        "rows": [
+          ["DFS", 50, 12, "No"],
+          ["BFS", 80, 15, "Yes"],
+          ["A*", 32, 18, "Yes"],
+          ["Dijkstra", 45, 20, "Yes"]
+        ]
+      }
+    ],
+    "figures": [
+      {
+        "id": "fig_architecture",
+        "title": "System Architecture",
+        "path": "diagrams/architecture.png",
+        "caption": "Overall system architecture diagram"
+      }
+    ],
+    "references": [
+      {
+        "id": "Russell2020",
+        "authors": ["Stuart Russell", "Peter Norvig"],
+        "title": "Artificial Intelligence: A Modern Approach",
+        "year": 2020,
+        "source": "Pearson",
+        "url": "https://aima.cs.berkeley.edu/"
+      },
+      {
+        "id": "Cormen2009",
+        "authors": ["Thomas H. Cormen", "Charles E. Leiserson"],
+        "title": "Introduction to Algorithms",
+        "year": 2009,
+        "source": "MIT Press"
+      }
+    ]
+  },
+  
+  "format_rules": {
+    "citation_style": "IEEE",
+    "font_name": "Times New Roman",
+    "font_size": 13,
+    "line_spacing": 1.5,
+    "margin_left": 3.0,
+    "margin_right": 2.0,
+    "margin_top": 2.0,
+    "margin_bottom": 2.0
+  },
+  
+  "version": "1.0"
+}

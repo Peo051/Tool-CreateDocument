@@ -1,0 +1,23 @@
+{
+  "project_info": {
+    "title": "Maze Duel - AI Game",
+    "domain": "Artificial Intelligence",
+    "description": "Multiplayer game with AI pathfinding algorithms",
+    "authors": [
+      {
+        "name": "Trần Dương Gia Bảo",
+        "student_id": "2001240039"
+      }
+    ],
+    "organization": "Đại học Công Thương TP. HCM",
+    "supervisor": "Trần Việt Hùng",
+    "supervisor_title": "TS."
+  },
+  "report_profile": {
+    "report_type": "project_report",
+    "audience": "lecturer",
+    "language": "vi",
+    "tone": "formal",
+    "target_length_pages": 50
+  }
+}

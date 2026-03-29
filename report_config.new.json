@@ -1,0 +1,75 @@
+{
+  "project_info": {
+    "title": "Maze Duel - BO3 / Gemini_Game",
+    "subtitle": "Ứng dụng thuật toán AI trong game mê cung đối kháng",
+    "description": "Game mê cung đối kháng với AI đa tầng sử dụng nhiều thuật toán tìm kiếm, CSP, và ra quyết định thông minh",
+    "students": [
+      {
+        "name": "Trần Dương Gia Bảo",
+        "id": "2001240039"
+      },
+      {
+        "name": "Nguyễn Thế Anh",
+        "id": "2001240015"
+      }
+    ],
+    "advisor": "TS. Trần Việt Hùng",
+    "university": "Đại học Công Thương TP. HCM",
+    "faculty": "Công nghệ thông tin",
+    "class_name": "DHCN01",
+    "github_repo": "https://github.com/GiaBao051/Gemini_Game",
+    "demo_url": "https://giabao051.github.io/Gemini_Game/",
+    "keywords": []
+  },
+  "report_profile": {
+    "report_type": "project_report",
+    "language": "vi"
+  },
+  "content_requirements": {
+    "include_cover": true,
+    "include_acknowledgment": true,
+    "include_commitment": true,
+    "include_toc": true,
+    "include_references": true,
+    "custom_sections": []
+  },
+  "technical_data": {
+    "algorithms": [
+      "DFS",
+      "BFS",
+      "A*",
+      "Dijkstra",
+      "CSP",
+      "Graph Coloring",
+      "Tarjan",
+      "Influence Map",
+      "Minimax"
+    ],
+    "technologies": [
+      "HTML5",
+      "JavaScript",
+      "Canvas API",
+      "MQTT",
+      "WebSocket"
+    ],
+    "datasets": [],
+    "algorithm_details": []
+  },
+  "evidence": {
+    "charts": [],
+    "tables": [],
+    "figures": [],
+    "references": []
+  },
+  "format_rules": {
+    "citation_style": "IEEE",
+    "font_name": "Times New Roman",
+    "font_size": 13,
+    "line_spacing": 1.5,
+    "margin_left": 3.0,
+    "margin_right": 2.0,
+    "margin_top": 2.0,
+    "margin_bottom": 2.0
+  },
+  "version": "1.0"
+}
