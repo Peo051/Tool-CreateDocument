@@ -86,6 +86,8 @@ class DocxRenderer:
             self._render_standard_section(section)
         elif section.type == SectionType.REFERENCES:
             self._render_references(section)
+        else:
+            self._render_standard_section(section)
     
     def _render_cover(self, section: Section, report: Report):
         """Render cover page"""
@@ -248,13 +250,20 @@ class DocxRenderer:
     
     def _render_references(self, section: Section):
         """Render references"""
-        self.doc.add_heading(section.title, section.level)
+        self.doc.add_heading(section.title, section.level or 1)
         
         if section.content:
-            refs = section.content.split('\n')
-            for ref in refs:
-                if ref.strip():
-                    self.doc.add_paragraph(ref.strip(), style='List Number')
+            # Content is already formatted by bibliography generator
+            lines = section.content.split('\n\n')
+            for line in lines:
+                if line.strip():
+                    self.doc.add_paragraph(line.strip())
+        elif hasattr(section, 'metadata') and 'references' in section.metadata:
+            # Fallback: render from metadata
+            for ref_data in section.metadata.get('references', []):
+                citation = ref_data.get('citation', '')
+                if citation:
+                    self.doc.add_paragraph(citation)
     
     def _add_evidence_for_section(self, section: Section, report: Report):
         """Add evidence (diagrams) for section"""

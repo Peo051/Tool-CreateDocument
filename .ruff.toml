@@ -1,0 +1,19 @@
+# Ruff configuration
+line-length = 120
+
+[lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "W",   # pycodestyle warnings
+]
+
+ignore = [
+    "E501",  # line too long (handled by formatter)
+    "F401",  # unused import (common in __init__.py)
+    "F841",  # unused variable (common in development)
+]
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["F401", "F841"]

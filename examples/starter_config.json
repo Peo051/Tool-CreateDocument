@@ -1,0 +1,21 @@
+{
+  "project_info": {
+    "title": "My First Report",
+    "description": "A simple example report to get started",
+    "students": [
+      {
+        "name": "Your Name",
+        "id": "123456"
+      }
+    ],
+    "university": "Your University"
+  },
+  "report_profile": {
+    "report_type": "project_report",
+    "language": "en"
+  },
+  "technical_data": {
+    "algorithms": ["BFS", "DFS"],
+    "technologies": ["Python"]
+  }
+}

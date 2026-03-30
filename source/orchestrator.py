@@ -22,6 +22,8 @@ from pipeline import (
 )
 from config_models import ReportConfig
 from models import Report
+from review.engine import ReviewEngine, ReviewReport
+from review.models import Severity
 
 
 @dataclass
@@ -129,7 +131,22 @@ class ReportOrchestrator:
     def _log(self, message: str):
         """Log message if verbose"""
         if self.verbose:
-            print(message)
+            try:
+                print(message)
+            except UnicodeEncodeError:
+                # Fallback for Windows console - replace emojis with ASCII
+                import sys
+                if sys.platform == 'win32':
+                    # Simple emoji to ASCII mapping
+                    replacements = {
+                        '🚀': '>>', '📖': '[*]', '✔️': '[v]', '📋': '[-]',
+                        '✍️': '[~]', '📊': '[#]', '📄': '[=]', '🔍': '[?]',
+                        '✅': '[OK]', '❌': '[X]', '⚠️': '[!]', 'ℹ': '[i]',
+                        '✗': '[X]', '⏸️': '[-]'
+                    }
+                    for emoji, ascii_rep in replacements.items():
+                        message = message.replace(emoji, ascii_rep)
+                print(message)
     
     def _initialize_components(self):
         """Initialize pipeline components"""
@@ -274,13 +291,13 @@ class ReportOrchestrator:
     
     def step_bind_evidence(self) -> bool:
         """
-        Step 5: Bind evidence (diagrams, tables, etc.)
+        Step 5: Bind evidence (diagrams, tables, etc.) and generate bibliography
         Returns: True if successful
         """
         step = self.tracker.add_step(
             "Bind Evidence",
             "📊",
-            "Binding diagrams and evidence to sections"
+            "Binding diagrams, evidence, and generating bibliography"
         )
         
         start = datetime.now()
@@ -288,7 +305,12 @@ class ReportOrchestrator:
         try:
             self._log(f"{step.emoji} {step.description}...")
             
+            # Bind evidence
             self.report = self.binder.bind(self.report)
+            
+            # Generate bibliography if references exist
+            if self.config_model and hasattr(self.config_model, 'evidence') and self.config_model.evidence.references:
+                self._generate_bibliography()
             
             duration = (datetime.now() - start).total_seconds()
             self.tracker.complete_step(step, duration)
@@ -300,6 +322,132 @@ class ReportOrchestrator:
             self.tracker.fail_step(step, str(e))
             self._log(f"   ❌ Evidence binding failed: {e}\n")
             return False
+    
+    def _generate_bibliography(self):
+        """Generate bibliography section from config references"""
+        try:
+            from references import BibliographyGenerator, ReferenceEntry
+            
+            # Get citation style from config
+            style = 'IEEE'  # default
+            if hasattr(self.config_model, 'format_rules') and hasattr(self.config_model.format_rules, 'citation_style'):
+                style = self.config_model.format_rules.citation_style
+            
+            # Convert config references to ReferenceEntry
+            ref_entries = []
+            for i, ref in enumerate(self.config_model.evidence.references, 1):
+                try:
+                    entry = ReferenceEntry.from_config_model(ref)
+                    # Use index as ID if not set
+                    if not entry.id or entry.id == ref.id:
+                        entry.id = str(i)
+                    ref_entries.append(entry)
+                except Exception:
+                    # Skip invalid references
+                    continue
+            
+            if ref_entries:
+                # Generate bibliography section
+                gen = BibliographyGenerator(style=style)
+                bib_section = gen.generate_section(ref_entries)
+                
+                # Add to report sections
+                from models import Section, SectionType
+                section = Section(
+                    id='references',
+                    type=SectionType.REFERENCES,
+                    title=bib_section['title'],
+                    content=bib_section['content'],
+                    metadata=bib_section['metadata']
+                )
+                self.report.sections.append(section)
+                
+        except ImportError:
+            # References module not available, skip
+            pass
+        except Exception as e:
+            # Log but don't fail
+            self._log(f"   ⚠️  Bibliography generation warning: {e}\n")
+    
+    def _report_to_review_data(self) -> Dict[str, Any]:
+        """Convert Report object to review engine data format"""
+        if not self.report:
+            return {}
+        
+        # Convert metadata
+        metadata = {
+            'title': self.report.metadata.title,
+            'subtitle': self.report.metadata.subtitle,
+            'authors': self.report.metadata.authors,
+            'report_type': 'project_report'
+        }
+        
+        # Convert sections
+        sections = []
+        for section in self.report.sections:
+            section_dict = {
+                'id': section.id,
+                'title': section.title,
+                'type': section.type.value if hasattr(section.type, 'value') else str(section.type),
+                'content': section.content,
+                'level': section.level,
+                'subsections': []
+            }
+            
+            # Convert subsections
+            for subsection in section.subsections:
+                subsection_dict = {
+                    'id': subsection.id,
+                    'title': subsection.title,
+                    'type': subsection.type.value if hasattr(subsection.type, 'value') else str(subsection.type),
+                    'content': subsection.content,
+                    'level': subsection.level
+                }
+                section_dict['subsections'].append(subsection_dict)
+            
+            sections.append(section_dict)
+        
+        # Convert evidence - group by type
+        evidence_dict = {
+            'figures': [],
+            'tables': [],
+            'charts': []
+        }
+        for ev in self.report.evidence:
+            ev_dict = {
+                'id': ev.id,
+                'type': ev.type.value if hasattr(ev.type, 'value') else str(ev.type),
+                'caption': getattr(ev, 'caption', ''),
+                'path': getattr(ev, 'path', '')
+            }
+            # Categorize by type
+            ev_type = ev_dict['type'].lower()
+            if 'figure' in ev_type or 'diagram' in ev_type:
+                evidence_dict['figures'].append(ev_dict)
+            elif 'table' in ev_type:
+                evidence_dict['tables'].append(ev_dict)
+            elif 'chart' in ev_type:
+                evidence_dict['charts'].append(ev_dict)
+            else:
+                # Default to figures
+                evidence_dict['figures'].append(ev_dict)
+        
+        # Extract references from config if available
+        references = []
+        if self.config_dict and 'evidence' in self.config_dict:
+            evidence_data = self.config_dict.get('evidence', {})
+            if isinstance(evidence_data, dict):
+                references = evidence_data.get('references', [])
+            elif isinstance(evidence_data, list):
+                # Legacy format - evidence is a list
+                references = []
+        
+        return {
+            'metadata': metadata,
+            'sections': sections,
+            'evidence': evidence_dict,
+            'references': references
+        }
     
     def step_render_output(self, output_path: str) -> bool:
         """
@@ -358,12 +506,30 @@ class ReportOrchestrator:
             if file_size < 1000:  # Less than 1KB is suspicious
                 raise ValueError(f"Output file too small: {file_size} bytes")
             
-            # Basic validation passed
+            # Run review engine on report
+            try:
+                review_data = self._report_to_review_data()
+                engine = ReviewEngine()
+                result = engine.review(review_data)
+                
+                # Display review results
+                self._log("\n" + ReviewReport.format_text(result))
+                
+                # Fail if critical errors found
+                if result.errors > 0:
+                    duration = (datetime.now() - start).total_seconds()
+                    self.tracker.fail_step(step, f"{result.errors} critical errors found")
+                    self._log(f"   ❌ Review failed with {result.errors} errors ({duration:.2f}s)\n")
+                    return False
+            except Exception as review_error:
+                # Log review error but don't fail the pipeline
+                self._log(f"   ⚠️  Review engine error (non-critical): {review_error}\n")
+            
+            # Success (warnings/info are acceptable)
             duration = (datetime.now() - start).total_seconds()
             self.tracker.complete_step(step, duration)
-            
             file_size_kb = file_size / 1024
-            self._log(f"   ✅ Output validated ({file_size_kb:.1f} KB, {duration:.2f}s)\n")
+            self._log(f"   ✅ Review passed ({file_size_kb:.1f} KB, {duration:.2f}s)\n")
             return True
             
         except Exception as e:

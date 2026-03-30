@@ -1,0 +1,23 @@
+{
+  "config": {
+    "project_info": {
+      "title": "Test Report Generation",
+      "description": "This is a test report to verify the generation pipeline works end-to-end",
+      "students": [
+        {
+          "name": "Test User",
+          "id": "12345"
+        }
+      ],
+      "university": "Test University"
+    },
+    "report_profile": {
+      "report_type": "project_report",
+      "language": "vi"
+    },
+    "technical_data": {
+      "algorithms": ["BFS", "DFS"],
+      "technologies": ["Python", "FastAPI", "React"]
+    }
+  }
+}

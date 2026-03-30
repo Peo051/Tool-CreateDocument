@@ -20,39 +20,36 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual Environment
-.venv/
+# Virtual environments
 venv/
-ENV/
 env/
+ENV/
+.venv/
 
-# IDE
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+test-results.xml
+*.cover
+
+# IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# Output files
-output/*.docx
-output/*.pdf
-diagrams/*.png
-*.log
-
 # OS
 .DS_Store
 Thumbs.db
-desktop.ini
 
-# Temporary files
-*.tmp
-*.bak
-*.backup
-~$*.docx
+# Project specific
+output/
+diagrams/*.png
+*.docx
+*.pdf
+!Bao_Cao_Do_An_TTNT_Full.docx
 
-# Test files
-test_*.png
-test_*.docx
-
-# Skills marketplace (keep only .kiro/skills/)
-skills/
+# Logs
+*.log

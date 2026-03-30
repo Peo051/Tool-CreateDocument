@@ -1,0 +1,19 @@
+{
+  "config": {
+    "project_info": {
+      "title": "Test Project",
+      "description": "Testing validation endpoint",
+      "students": [
+        {
+          "name": "Test User",
+          "id": "12345"
+        }
+      ],
+      "university": "Test University"
+    },
+    "report_profile": {
+      "report_type": "project_report",
+      "language": "vi"
+    }
+  }
+}

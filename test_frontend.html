@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Testing API Connection</h1>
+    <button onclick="testHealth()">Test Health</button>
+    <button onclick="testValidate()">Test Validate</button>
+    <pre id="output"></pre>
+
+    <script>
+        async function testHealth() {
+            try {
+                const response = await fetch('http://localhost:8000/api/health');
+                const data = await response.json();
+                document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('output').textContent = 'Error: ' + error.message;
+            }
+        }
+
+        async function testValidate() {
+            try {
+                const config = {
+                    config: {
+                        project_info: {
+                            title: "Test",
+                            description: "Test description",
+                            students: [{name: "Test", id: "123"}],
+                            university: "Test Uni"
+                        },
+                        report_profile: {
+                            report_type: "project_report",
+                            language: "vi"
+                        }
+                    }
+                };
+                const response = await fetch('http://localhost:8000/api/validate', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(config)
+                });
+                const data = await response.json();
+                document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('output').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
